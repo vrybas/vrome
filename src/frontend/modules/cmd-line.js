@@ -6,6 +6,18 @@ var CmdLine = (function() {
     commands.push([command,fun]);
 	}
 
+  function getCommands(keyword) {
+    keyword = keyword || '';
+    var matched = [];
+
+    for (var i = 0; i < commands.length; i++) {
+      if (new RegExp('^' + keyword).test(commands[i][0])) {
+        matched.push(commands[i][0]);
+      }
+    }
+    return matched;
+  }
+
   function start() {
     CmdLineMode = true;
     CmdBox.set({content : ''});
@@ -28,5 +40,5 @@ var CmdLine = (function() {
     CmdLineMode = false;
   }
 
-  return { start : start, exec : exec , add : add };
+  return { start : start, exec : exec , add : add , getCommands : getCommands };
 })()
