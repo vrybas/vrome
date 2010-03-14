@@ -20,7 +20,7 @@ var CmdLine = (function() {
 
   function start() {
     CmdLineMode = true;
-    CmdBox.set({content : ''});
+    CmdBox.set({content : '', pressDown : Completion.close });
   }
 
   function exec() {

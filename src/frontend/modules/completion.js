@@ -26,11 +26,12 @@ var Completion = (function() {
     CompletionMode = true;
     selectedIndex = -1;
 
-    /^(\S+)\s*(.*)$/.test(CmdBox.get().content);
+    var content = CmdBox.get().content;
+    /^(\S+)\s*(.*)$/.test(content);
     var cmd     = RegExp.$1;
     var arg     = RegExp.$1 && RegExp.$2;
 
-    if (!arg) {
+    if (!/\s/.test(content)) {
       completeCommands(cmd);
     } else if (cmd == 'open' || cmd == 'tabopen') {
       completeUrls(arg);
@@ -42,6 +43,8 @@ var Completion = (function() {
   // FIXME
   function close() {
     CompletionMode = false;
+    var box = document.getElementById('_vrome_content');
+    if (box) box.innerHTML = '';
   }
 
   function next(step) {

@@ -52,8 +52,8 @@ var CmdBox = (function() {
       var input = cmdBoxInput() || createCmdBoxInput();
       input.value = opt.content;
       // input.setSelectionRange(0, input.value.length);
-      // input.addEventListener('keydown',pressDown,false);
-      // input.addEventListener('keyup'  ,pressUp,false);
+      input.addEventListener('keydown',pressDown,false);
+      input.addEventListener('keyup'  ,pressUp,false);
       input.focus();
     }
 		if (opt.pressUp)   { pressUpFunction   = opt.pressUp; }
