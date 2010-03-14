@@ -14,6 +14,7 @@ function AcceptKeyFunction() {
   Search.next();
   Buffer.gotoFirstMatchHandle();
   Buffer.deleteMatchHandle();
+	Completion.select();
 }
 
 function isEscapeKey(key) {
@@ -28,6 +29,7 @@ function EscapeKeyFunction() {
 }
 
 function CancelKeyFunction() {
+	Completion.close(); //FIXME
   CmdBox.remove();
   Hint.remove();
   Search.stop();
@@ -154,6 +156,12 @@ with (KeyEvent) {
   add("<C-z>" , KeyEvent.disable            );
   add("<C-v>" , KeyEvent.passNextKey        );
   add("."     , KeyEvent.runLast            );
+
+
+  add("<Tab>"   , Completion.next           );
+  add("<S-Tab>" , Completion.prev           );
+  add("<Tab>"   , Completion.next, true     );
+  add("<S-Tab>" , Completion.prev, true     );
 
   // a-zA-Z
   for (var i = 65; i <= 122; i++) {

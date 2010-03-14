@@ -62,3 +62,26 @@ a[vrome_highlight=hint_active] {
   color: #000 !important;
   z-index     : 100000;
 }
+
+li[completion_highlight] {
+	background-color: red;
+}
+
+#_vrome_content{
+	list-style-type:none;
+	width:200px;
+	position:fixed !important;
+	background: #EFF8FF;
+	bottom:30px;
+	right:11px;
+	padding:4px 10px;
+	margin:0px;
+	padding:0px;
+	border-top:#3f86bb 1px solid !important;
+	border-left:#3f86bb 1px solid !important;
+	border-right:#3f86bb 1px solid !important;
+	vertical-align: middle;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-box-shadow:-1px -1px 4px #888;
+	z-index: 110000;
+}

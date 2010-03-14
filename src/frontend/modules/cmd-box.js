@@ -13,6 +13,9 @@ var CmdBox = (function() {
       div = document.createElement('div');
       div.setAttribute('id',box_id);
       document.body.appendChild(div);
+			var ul = document.createElement('ul');
+			ul.setAttribute('id','_vrome_content');
+      document.body.appendChild(ul);
     }
     return div;
   }
@@ -48,9 +51,9 @@ var CmdBox = (function() {
     if (typeof(opt.content) == 'string') {
       var input = cmdBoxInput() || createCmdBoxInput();
       input.value = opt.content;
-      input.setSelectionRange(0, input.value.length);
-      input.addEventListener('keydown',pressDown,false);
-      input.addEventListener('keyup'  ,pressUp,false);
+      // input.setSelectionRange(0, input.value.length);
+      // input.addEventListener('keydown',pressDown,false);
+      // input.addEventListener('keyup'  ,pressUp,false);
       input.focus();
     }
 		if (opt.pressUp)   { pressUpFunction   = opt.pressUp; }
@@ -69,6 +72,8 @@ var CmdBox = (function() {
 		pressUpFunction   = function(){};
 		pressDownFunction = function(){};
     var box = document.getElementById(box_id);
+    if(box) document.body.removeChild(box);
+		var box = document.getElementById('_vrome_content');
     if(box) document.body.removeChild(box);
   }
 
