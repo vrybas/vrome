@@ -14,6 +14,8 @@ chrome.extension.onConnect.addListener(function(port) {
 
     if (action instanceof Function) action.apply('', argument);
 
-    Debug("Port Message: " + msg);
+		var message = "";
+		for (var i in msg) { message = (message + " " + i + ":" + msg[i]) }
+    Debug("Port Message: " + message);
   });
 })

@@ -17,9 +17,12 @@ var Completion = (function() {
     drawCompletions(CmdLine.getCommands(keyword));
   }
 
-  function completeUrls(keyword) {
-    // FIXME open,tabopen complete (search by) search engine, history, bookmarks
-    drawCompletions([]);
+  function completeUrls(msg) {
+    if (msg && msg.matched) {
+      drawCompletions(msg.matched);
+    } else {
+      Post({action: "Completion.completeUrls",keyword : msg})
+    }
   }
 
   function start() {
@@ -84,5 +87,6 @@ var Completion = (function() {
     next   : next,
     prev   : prev,
     select : select,
+    completeUrls : completeUrls,
   }
 })()
