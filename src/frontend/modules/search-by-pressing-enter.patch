@@ -1,0 +1,32 @@
+# Completely disables incremental search and waits for pressing Enter
+
+---
+ src/frontend/modules/search.js |    9 ++++-----
+ 1 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/frontend/modules/search.js b/src/frontend/modules/search.js
+index f799be7..a82416e 100644
+--- a/src/frontend/modules/search.js
++++ b/src/frontend/modules/search.js
+@@ -100,14 +100,13 @@ var Search = (function(){
+ 
+   function handleInput(e){
+     if (!searchMode) return;
+-    if (!isAcceptKey(getKey(e))) remove();
+-    content = CmdBox.get().content;
+-    if (content.length >= 3) {
+-      find(content);
+-      lastSearch = content;
++    if (isAcceptKey(getKey(e))) {
++      find(CmdBox.get().content);
++      lastSearch = CmdBox.get().content;
+     }
+   }
+ 
++
+   function start(backward){
+     searchMode = true;
+     direction = backward ? -1 : 1 ;
+-- 
+1.7.0.4
+
