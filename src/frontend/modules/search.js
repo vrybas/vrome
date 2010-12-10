@@ -97,12 +97,15 @@ var Search = (function(){
     }
   }
 
-  function handleInput(e){
-		if (!searchMode) return;
-    if (!isAcceptKey(getKey(e))) remove();
 
-    find(CmdBox.get().content);
-    lastSearch = CmdBox.get().content;
+  function handleInput(e){
+    if (!searchMode) return;
+    if (!isAcceptKey(getKey(e))) remove();
+    content = CmdBox.get().content;
+    if (content.length >= 3) {
+      find(content);
+      lastSearch = content;
+    }
   }
 
   function start(backward){
